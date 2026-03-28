@@ -15,15 +15,13 @@ const content = {
         location: 'France',
         tech: 'Next.js + Stripe',
         screenshot: 'https://s.wordpress.com/mshots/v1/https%3A%2F%2Fwww.fulflo.app%2F?w=800&h=1500',
-        iframe: null,
       },
       {
         name: "Saint's Wings",
         description: 'Restaurant wings & burgers',
         location: 'Dubai',
         tech: 'React + Headless CMS',
-        screenshot: null,
-        iframe: 'https://saintswings--moussatouremt87.replit.app/',
+        screenshot: 'https://api.microlink.io/?url=https%3A%2F%2Fsaintswings--moussatouremt87.replit.app%2F&screenshot=true&meta=false&embed=screenshot.url',
       },
       {
         name: 'A.SAP Consulting',
@@ -31,7 +29,6 @@ const content = {
         location: 'International',
         tech: 'Next.js + Tailwind',
         screenshot: 'https://s.wordpress.com/mshots/v1/https%3A%2F%2Fsap-context--moussatouremt87.replit.app%2F?w=800&h=1500',
-        iframe: null,
       },
       {
         name: 'Citere',
@@ -39,7 +36,6 @@ const content = {
         location: 'France',
         tech: 'React + Firebase',
         screenshot: null,
-        iframe: null,
       },
       {
         name: 'Family Zen',
@@ -47,7 +43,6 @@ const content = {
         location: 'UAE',
         tech: 'Next.js + Supabase',
         screenshot: 'https://s.wordpress.com/mshots/v1/https%3A%2F%2F1001familles.com%2F?w=800&h=1500',
-        iframe: null,
       },
     ],
   },
@@ -61,15 +56,13 @@ const content = {
         location: 'France',
         tech: 'Next.js + Stripe',
         screenshot: 'https://s.wordpress.com/mshots/v1/https%3A%2F%2Fwww.fulflo.app%2F?w=800&h=1500',
-        iframe: null,
       },
       {
         name: "Saint's Wings",
         description: 'Wings & burgers restaurant',
         location: 'Dubai',
         tech: 'React + Headless CMS',
-        screenshot: null,
-        iframe: 'https://saintswings--moussatouremt87.replit.app/',
+        screenshot: 'https://api.microlink.io/?url=https%3A%2F%2Fsaintswings--moussatouremt87.replit.app%2F&screenshot=true&meta=false&embed=screenshot.url',
       },
       {
         name: 'A.SAP Consulting',
@@ -77,7 +70,6 @@ const content = {
         location: 'International',
         tech: 'Next.js + Tailwind',
         screenshot: 'https://s.wordpress.com/mshots/v1/https%3A%2F%2Fsap-context--moussatouremt87.replit.app%2F?w=800&h=1500',
-        iframe: null,
       },
       {
         name: 'Citere',
@@ -85,7 +77,6 @@ const content = {
         location: 'France',
         tech: 'React + Firebase',
         screenshot: null,
-        iframe: null,
       },
       {
         name: 'Family Zen',
@@ -93,188 +84,136 @@ const content = {
         location: 'UAE',
         tech: 'Next.js + Supabase',
         screenshot: 'https://s.wordpress.com/mshots/v1/https%3A%2F%2F1001familles.com%2F?w=800&h=1500',
-        iframe: null,
       },
     ],
   },
 };
-// Citere placeholder - warm yellow education theme
-function CiterePlaceholder() {
-  return (
-    <div style={{
-      width: '100%',
-      height: '100%',
-      background: 'linear-gradient(135deg, #FFF8E7 0%, #FEF3C7 50%, #FDE68A 100%)',
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-      justifyContent: 'center',
-      padding: '20px',
-    }}>
-      <svg width="48" height="48" viewBox="0 0 48 48" fill="none" style={{ marginBottom: '12px' }}>
-        <circle cx="24" cy="24" r="20" stroke="#D97706" strokeWidth="2" fill="none"/>
-        <path d="M16 20C16 20 18 16 24 16C30 16 32 20 32 20" stroke="#D97706" strokeWidth="2" strokeLinecap="round"/>
-        <path d="M14 24C14 24 14 18 18 14" stroke="#D97706" strokeWidth="2" strokeLinecap="round"/>
-        <path d="M34 24C34 24 34 18 30 14" stroke="#D97706" strokeWidth="2" strokeLinecap="round"/>
-        <circle cx="24" cy="28" r="4" fill="#D97706" opacity="0.3"/>
-        <path d="M20 32C20 32 22 34 24 34C26 34 28 32 28 32" stroke="#D97706" strokeWidth="2" strokeLinecap="round"/>
+const CiterePlaceholder = () => (
+  <div style={{
+    width: '100%', height: '100%',
+    background: 'linear-gradient(135deg, #FFF8E7 0%, #FFE4B5 50%, #FFDAB9 100%)',
+    display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
+    padding: '20px', position: 'relative', overflow: 'hidden',
+  }}>
+    <div style={{ marginBottom: '16px' }}>
+      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#D97706" strokeWidth="1.5">
+        <path d="M3 18v-6a9 9 0 0 1 18 0v6" />
+        <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z" />
       </svg>
-      <div style={{
-        fontSize: '16px',
-        fontWeight: '600',
-        color: '#92400E',
-        textAlign: 'center',
-        lineHeight: '1.4',
-        fontFamily: 'Georgia, serif',
-      }}>
-        Et si votre enfant avait enfin un coach ?
-      </div>
-      <div style={{
-        marginTop: '8px',
-        fontSize: '12px',
-        color: '#B45309',
-        fontFamily: 'monospace',
-      }}>
-        citere-edutech.org
-      </div>
     </div>
-  );
-}
+    <p style={{ color: '#92400E', fontSize: '14px', fontWeight: '600', textAlign: 'center', margin: 0, lineHeight: '1.4' }}>
+      Et si votre enfant avait<br />enfin un coach ?
+    </p>
+    <p style={{ color: '#B45309', fontSize: '11px', marginTop: '8px', opacity: 0.8 }}>citere-edutech.org</p>
+  </div>
+);
+const scrollAnimStyles = "@keyframes scrollPreview { 0%,10% { object-position: center top; } 90%,100% { object-position: center bottom; } } .portfolio-screenshot { width:100%; height:100%; object-fit:cover; object-position:center top; } .portfolio-card:hover .portfolio-screenshot { animation: scrollPreview 4s ease-in-out infinite alternate; }";
 
-// CSS keyframes for scroll preview animation
-const scrollAnimStyles = `
-@keyframes scrollPreview {
-  0%, 10% { object-position: center top; }
-  90%, 100% { object-position: center bottom; }
-}
-.portfolio-screenshot {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center top;
-}
-.portfolio-card:hover .portfolio-screenshot {
-  animation: scrollPreview 4s ease-in-out infinite alternate;
-}
-`;
-
-function ProjectCard({ project, index }) {
-  const isCitere = project.name === 'Citere';
-  const hasIframe = !!project.iframe;
-  const hasScreenshot = !!project.screenshot;
-  const displayUrl = hasIframe
-    ? project.iframe.replace(/^https?:\/\//, '').replace(/\/$/, '')
-    : hasScreenshot
-    ? decodeURIComponent(project.screenshot.split('/v1/')[1]?.split('?')[0] || '').replace(/^https?:\/\//, '').replace(/\/$/, '')
-    : isCitere ? 'citere-edutech.org' : '';
+const ProjectCard = ({ project, index }) => {
+  const getDomain = (url) => {
+    try {
+      if (url.includes('mshots')) {
+        const decoded = decodeURIComponent(url.split('/v1/')[1].split('?')[0]);
+        return new URL(decoded).hostname;
+      }
+      if (url.includes('microlink')) {
+        const params = new URL(url).searchParams;
+        return new URL(params.get('url')).hostname;
+      }
+      return new URL(url).hostname;
+    } catch { return ''; }
+  };
 
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ delay: index * 0.1 }}
-      className="portfolio-card"
+      transition={{ duration: 0.5, delay: index * 0.1 }}
+      className="portfolio-card group"
     >
-      <div
-        className="rounded-xl overflow-hidden"
-        style={{ background: 'rgba(30, 41, 59, 0.5)', border: '1px solid rgba(148, 163, 184, 0.1)' }}
-      >
-        {/* Browser chrome bar */}
-        <div
-          className="flex items-center gap-2 px-4 py-2"
-          style={{ background: 'rgba(15, 23, 42, 0.8)', borderBottom: '1px solid rgba(148, 163, 184, 0.1)' }}
-        >
-          <div className="flex gap-1.5">
-            <div className="w-2.5 h-2.5 rounded-full" style={{ background: '#EF4444' }} />
-            <div className="w-2.5 h-2.5 rounded-full" style={{ background: '#EAB308' }} />
-            <div className="w-2.5 h-2.5 rounded-full" style={{ background: '#22C55E' }} />
+      <div style={{
+        background: '#1E293B',
+        borderRadius: '12px',
+        overflow: 'hidden',
+        border: '1px solid rgba(132,204,22,0.1)',
+        transition: 'border-color 0.3s',
+      }}
+      onMouseEnter={e => e.currentTarget.style.borderColor = 'rgba(132,204,22,0.3)'}
+      onMouseLeave={e => e.currentTarget.style.borderColor = 'rgba(132,204,22,0.1)'}
+      >        {/* Browser chrome bar */}
+        <div style={{
+          background: '#0F172A', padding: '8px 12px',
+          display: 'flex', alignItems: 'center', gap: '8px',
+          borderBottom: '1px solid rgba(255,255,255,0.05)',
+        }}>
+          <div style={{ display: 'flex', gap: '4px' }}>
+            <div style={{ width: 8, height: 8, borderRadius: '50%', background: '#EF4444' }} />
+            <div style={{ width: 8, height: 8, borderRadius: '50%', background: '#F59E0B' }} />
+            <div style={{ width: 8, height: 8, borderRadius: '50%', background: '#22C55E' }} />
           </div>
-          <div
-            className="flex-1 text-xs truncate px-3 py-1 rounded"
-            style={{ color: '#64748B', background: 'rgba(15, 23, 42, 0.5)' }}
-          >
-            {displayUrl}
-          </div>
+          <span style={{ color: '#64748B', fontSize: '11px', marginLeft: '4px' }}>
+            {project.screenshot ? getDomain(project.screenshot) : (project.name === 'Citere' ? 'citere-edutech.org' : '')}
+          </span>
         </div>
 
-        {/* Screenshot / iframe / placeholder area */}
-        <div className="relative" style={{ height: '220px', overflow: 'hidden' }}>
-          {hasIframe ? (
-            <div style={{ width: '100%', height: '100%', overflow: 'hidden', position: 'relative' }}>
-              <iframe
-                src={project.iframe}
-                title={project.name}
-                style={{
-                  width: '1200px',
-                  height: '800px',
-                  border: 'none',
-                  transform: 'scale(0.335)',
-                  transformOrigin: 'top left',
-                  pointerEvents: 'none',
-                }}
-                loading="lazy"
-                sandbox="allow-scripts allow-same-origin"
-              />
-            </div>
-          ) : hasScreenshot ? (
+        {/* Screenshot or Placeholder */}
+        <div style={{ width: '100%', height: '220px', overflow: 'hidden', position: 'relative', background: '#0F172A' }}>
+          {project.screenshot ? (
             <img
               src={project.screenshot}
               alt={project.name}
               className="portfolio-screenshot"
               loading="lazy"
             />
-          ) : (
+          ) : project.name === 'Citere' ? (
             <CiterePlaceholder />
+          ) : (
+            <div style={{ width: '100%', height: '100%', background: '#1E293B', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <span style={{ color: '#475569', fontSize: '14px' }}>Preview coming soon</span>
+            </div>
           )}
         </div>
 
         {/* Info bar */}
-        <div className="p-4 flex items-center justify-between">
-          <div>
-            <h3 className="font-semibold text-base" style={{ color: '#F1F5F9' }}>
-              {project.name}
-            </h3>
-            <p className="text-sm" style={{ color: '#94A3B8' }}>
-              {project.description}
-            </p>
+        <div style={{ padding: '16px' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <h3 style={{ color: '#F1F5F9', fontSize: '16px', fontWeight: '600', margin: 0 }}>{project.name}</h3>
+            <span style={{ color: '#94A3B8', fontSize: '12px', display: 'flex', alignItems: 'center', gap: '4px' }}>
+              <MapPin size={12} /> {project.location}
+            </span>
           </div>
-          <div className="flex items-center gap-1 text-xs" style={{ color: '#94A3B8' }}>
-            <MapPin size={12} />
-            {project.location}
-          </div>
+          <p style={{ color: '#94A3B8', fontSize: '13px', margin: '4px 0 0 0' }}>{project.description}</p>
         </div>
       </div>
     </motion.div>
   );
-}
+};
 
 export default function Portfolio() {
   const { language } = useLanguage();
   const t = content[language];
 
   return (
-    <section id="portfolio" className="py-24 px-6 relative">
+    <section id="portfolio" style={{ padding: '100px 20px', background: '#0F172A' }}>
       <style dangerouslySetInnerHTML={{ __html: scrollAnimStyles }} />
-
-      <div className="max-w-6xl mx-auto">
+      <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          style={{ textAlign: 'center', marginBottom: '60px' }}
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4" style={{ color: '#F1F5F9' }}>
-            {t.title}
-          </h2>
-          <p className="text-lg" style={{ color: '#94A3B8' }}>
-            {t.subtitle}
-          </p>
+          <h2 style={{ color: '#F1F5F9', fontSize: '36px', fontWeight: '700', marginBottom: '16px' }}>{t.title}</h2>
+          <p style={{ color: '#94A3B8', fontSize: '18px' }}>{t.subtitle}</p>
         </motion.div>
-
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {t.projects.map((project, i) => (
-            <ProjectCard key={project.name} project={project} index={i} />
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))',
+          gap: '32px',
+        }}>
+          {t.projects.map((project, index) => (
+            <ProjectCard key={project.name} project={project} index={index} />
           ))}
         </div>
       </div>
