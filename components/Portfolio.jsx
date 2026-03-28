@@ -25,8 +25,8 @@ const content = {
         location: 'Dubai',
         accent: '#EAB308',
         tech: 'React + Headless CMS',
-        url: 'https://wingsaints.com/',
-        screenshot: 'https://s.wordpress.com/mshots/v1/https%3A%2F%2Fwingsaints.com%2F?w=800&h=500',
+        url: 'https://saintswings--moussatouremt87.replit.app/',
+        screenshot: null,
       },
       {
         name: 'A.SAP Consulting',
@@ -64,7 +64,7 @@ const content = {
     projects: [
       {
         name: 'FulFlo',
-        description: 'Premium surplus brands e-commerce',
+        description: 'Premium brand surplus e-commerce',
         location: 'France',
         accent: '#22C55E',
         tech: 'Next.js + Stripe',
@@ -77,8 +77,8 @@ const content = {
         location: 'Dubai',
         accent: '#EAB308',
         tech: 'React + Headless CMS',
-        url: 'https://wingsaints.com/',
-        screenshot: 'https://s.wordpress.com/mshots/v1/https%3A%2F%2Fwingsaints.com%2F?w=800&h=500',
+        url: 'https://saintswings--moussatouremt87.replit.app/',
+        screenshot: null,
       },
       {
         name: 'A.SAP Consulting',
@@ -91,7 +91,7 @@ const content = {
       },
       {
         name: 'Citere',
-        description: 'Interactive coaching for children',
+        description: 'Interactive coaching for kids',
         location: 'France',
         accent: '#F59E0B',
         tech: 'React + Firebase',
@@ -100,7 +100,7 @@ const content = {
       },
       {
         name: 'Family Zen',
-        description: 'Family coaching & support',
+        description: 'Family support platform',
         location: 'UAE',
         accent: '#38BDF8',
         tech: 'Next.js + Supabase',
@@ -111,136 +111,235 @@ const content = {
   },
 };
 
-/* Citere placeholder — styled to match the actual site warm yellow/education theme */
-const CiterePlaceholder = () => (
-  <div
-    className="w-full h-full flex flex-col items-center justify-center relative overflow-hidden"
-    style={{
-      background: 'linear-gradient(135deg, #FFF8E7 0%, #FEF3C7 40%, #FDE68A 100%)',
-    }}
-  >
-    {/* Decorative circles */}
-    <div className="absolute -top-10 -right-10 w-40 h-40 rounded-full bg-amber-300/30" />
-    <div className="absolute -bottom-8 -left-8 w-32 h-32 rounded-full bg-orange-300/20" />
-
-    {/* Headphone icon */}
-    <div className="w-16 h-16 rounded-2xl bg-amber-400/20 flex items-center justify-center mb-4 z-10">
-      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#D97706" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M3 18v-6a9 9 0 0 1 18 0v6" />
-        <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z" />
+// Saint's Wings placeholder - dark/gold neon aesthetic matching real site
+function SaintsWingsPlaceholder() {
+  return (
+    <div style={{
+      width: '100%',
+      height: '100%',
+      background: 'linear-gradient(180deg, #1a1008 0%, #0d0a04 50%, #1a1008 100%)',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      justifyContent: 'center',
+      position: 'relative',
+      overflow: 'hidden',
+    }}>
+      {/* Neon glow background */}
+      <div style={{
+        position: 'absolute',
+        top: '50%',
+        left: '50%',
+        transform: 'translate(-50%, -50%)',
+        width: '300px',
+        height: '300px',
+        background: 'radial-gradient(circle, rgba(234,179,8,0.15) 0%, transparent 70%)',
+        borderRadius: '50%',
+      }} />
+      {/* Crown SVG */}
+      <svg width="64" height="48" viewBox="0 0 64 48" fill="none" style={{ marginBottom: '12px', filter: 'drop-shadow(0 0 12px rgba(234,179,8,0.5))' }}>
+        <path d="M4 40L12 16L24 28L32 8L40 28L52 16L60 40H4Z" fill="url(#crownGrad)" stroke="#EAB308" strokeWidth="2"/>
+        <rect x="4" y="40" width="56" height="6" rx="2" fill="url(#crownGrad)"/>
+        <defs>
+          <linearGradient id="crownGrad" x1="32" y1="8" x2="32" y2="46" gradientUnits="userSpaceOnUse">
+            <stop stopColor="#FCD34D"/>
+            <stop offset="1" stopColor="#B45309"/>
+          </linearGradient>
+        </defs>
       </svg>
+      {/* SW DXB text */}
+      <div style={{
+        fontFamily: 'Georgia, serif',
+        fontSize: '28px',
+        fontWeight: 'bold',
+        color: '#EAB308',
+        textShadow: '0 0 20px rgba(234,179,8,0.4), 0 0 40px rgba(234,179,8,0.2)',
+        letterSpacing: '6px',
+        marginBottom: '6px',
+      }}>
+        SW <span style={{ color: '#94A3B8', fontSize: '16px', fontWeight: 'normal' }}>DXB</span>
+      </div>
+      {/* Tagline */}
+      <div style={{
+        fontSize: '11px',
+        color: '#A8860A',
+        letterSpacing: '4px',
+        textTransform: 'uppercase',
+        fontFamily: 'Georgia, serif',
+      }}>
+        Strictly Business
+      </div>
+      {/* Domain */}
+      <div style={{
+        marginTop: '16px',
+        fontSize: '12px',
+        color: '#92400E',
+        fontFamily: 'monospace',
+      }}>
+        saintswings.dxb
+      </div>
     </div>
+  );
+}
 
-    <p
-      className="text-2xl font-bold text-center z-10 px-4 leading-tight"
-      style={{ color: '#92400E' }}
+// Citere placeholder - warm yellow education theme
+function CiterePlaceholder() {
+  return (
+    <div style={{
+      width: '100%',
+      height: '100%',
+      background: 'linear-gradient(135deg, #FFF8E7 0%, #FEF3C7 50%, #FDE68A 100%)',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      justifyContent: 'center',
+      padding: '20px',
+    }}>
+      <svg width="48" height="48" viewBox="0 0 48 48" fill="none" style={{ marginBottom: '12px' }}>
+        <circle cx="24" cy="24" r="20" stroke="#D97706" strokeWidth="2" fill="none"/>
+        <path d="M16 20C16 20 18 16 24 16C30 16 32 20 32 20" stroke="#D97706" strokeWidth="2" strokeLinecap="round"/>
+        <path d="M14 24C14 24 14 18 18 14" stroke="#D97706" strokeWidth="2" strokeLinecap="round"/>
+        <path d="M34 24C34 24 34 18 30 14" stroke="#D97706" strokeWidth="2" strokeLinecap="round"/>
+        <circle cx="24" cy="28" r="4" fill="#D97706" opacity="0.3"/>
+        <path d="M20 32C20 32 22 34 24 34C26 34 28 32 28 32" stroke="#D97706" strokeWidth="2" strokeLinecap="round"/>
+      </svg>
+      <div style={{
+        fontSize: '16px',
+        fontWeight: '600',
+        color: '#92400E',
+        textAlign: 'center',
+        lineHeight: '1.4',
+        fontFamily: 'Georgia, serif',
+      }}>
+        Et si votre enfant avait enfin un coach ?
+      </div>
+      <div style={{
+        marginTop: '8px',
+        fontSize: '12px',
+        color: '#B45309',
+        fontFamily: 'monospace',
+      }}>
+        citere-edutech.org
+      </div>
+    </div>
+  );
+}
+
+function ProjectCard({ project, index, visitText }) {
+  const isPlaceholder = !project.screenshot;
+  const isSaintsWings = project.name === "Saint's Wings";
+  const isCitere = project.name === 'Citere';
+  const displayUrl = project.url ? project.url.replace(/^https?:\/\//, '').replace(/\/$/, '') : (isCitere ? 'citere-edutech.org' : '');
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ delay: index * 0.1 }}
+      className="group"
     >
-      Et si votre enfant avait enfin un coach ?
-    </p>
-    <p className="text-sm mt-2 z-10" style={{ color: '#B45309' }}>
-      citere-edutech.org
-    </p>
-  </div>
-);
-
-const ProjectCard = ({ project, index, visitLabel }) => (
-  <motion.div
-    initial={{ opacity: 0, y: 40 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.6, delay: index * 0.1 }}
-    viewport={{ once: true }}
-    className="group"
-  >
-    <div className="card overflow-hidden">
-      {/* Browser chrome */}
-      <div className="bg-charcoal-900 border-b border-charcoal-800/50 px-4 py-2.5">
-        <div className="flex items-center gap-2">
-          <div className="w-2.5 h-2.5 rounded-full bg-red-500/80"></div>
-          <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/80"></div>
-          <div className="w-2.5 h-2.5 rounded-full bg-green-500/80"></div>
-          <div className="ml-3 flex-1 bg-charcoal-800/60 rounded px-3 py-1 text-xs text-slate-400/60 truncate">
-            {project.url
-              ? project.url.replace(/^https?:\/\//, '').replace(/\/$/, '')
-              : 'citere-edutech.org'}
+      <div
+        className="rounded-xl overflow-hidden"
+        style={{ background: 'rgba(30, 41, 59, 0.5)', border: '1px solid rgba(148, 163, 184, 0.1)' }}
+      >
+        {/* Browser chrome bar */}
+        <div
+          className="flex items-center gap-2 px-4 py-2"
+          style={{ background: 'rgba(15, 23, 42, 0.8)', borderBottom: '1px solid rgba(148, 163, 184, 0.1)' }}
+        >
+          <div className="flex gap-1.5">
+            <div className="w-2.5 h-2.5 rounded-full" style={{ background: '#EF4444' }} />
+            <div className="w-2.5 h-2.5 rounded-full" style={{ background: '#EAB308' }} />
+            <div className="w-2.5 h-2.5 rounded-full" style={{ background: '#22C55E' }} />
+          </div>
+          <div
+            className="flex-1 text-xs truncate px-3 py-1 rounded"
+            style={{ color: '#64748B', background: 'rgba(15, 23, 42, 0.5)' }}
+          >
+            {displayUrl}
           </div>
         </div>
-      </div>
 
-      {/* Screenshot area */}
-      <div className="relative h-52 overflow-hidden bg-charcoal-800">
-        {project.screenshot ? (
-          <img
-            src={project.screenshot}
-            alt={`${project.name} website screenshot`}
-            className="w-full h-full object-cover object-top transition-transform duration-[3s] ease-in-out group-hover:object-bottom"
-            loading="lazy"
-          />
-        ) : (
-          <CiterePlaceholder />
-        )}
+        {/* Screenshot area */}
+        <div className="relative" style={{ height: '220px', overflow: 'hidden' }}>
+          {isPlaceholder ? (
+            isSaintsWings ? <SaintsWingsPlaceholder /> : <CiterePlaceholder />
+          ) : (
+            <img
+              src={project.screenshot}
+              alt={project.name}
+              style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top' }}
+              loading="lazy"
+            />
+          )}
 
-        {/* Hover overlay with visit link */}
-        <div className="absolute inset-0 bg-charcoal-900/0 group-hover:bg-charcoal-900/70 transition-all duration-500 flex items-center justify-center z-20">
-          <div className="opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-500 text-center">
-            <div className="text-sm font-mono text-lime-400 mb-2">{project.tech}</div>
-            {project.url && (
+          {/* Hover overlay */}
+          {project.url && (
+            <div
+              className="absolute inset-0 flex flex-col items-center justify-center gap-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+              style={{ background: 'rgba(15, 23, 42, 0.85)' }}
+            >
+              <span className="text-sm font-medium" style={{ color: '#BEF264' }}>
+                {project.tech}
+              </span>
               <a
                 href={project.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 text-xs text-slate-300 hover:text-lime-400 transition-colors"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-colors"
+                style={{ background: '#84CC16', color: '#0F172A' }}
               >
-                <ExternalLink size={14} />
-                {visitLabel}
+                {visitText} <ExternalLink size={14} />
               </a>
-            )}
+            </div>
+          )}
+        </div>
+
+        {/* Info bar */}
+        <div className="p-4 flex items-center justify-between">
+          <div>
+            <h3 className="font-semibold text-base" style={{ color: '#F1F5F9' }}>
+              {project.name}
+            </h3>
+            <p className="text-sm" style={{ color: '#94A3B8' }}>
+              {project.description}
+            </p>
+          </div>
+          <div className="flex items-center gap-1 text-xs" style={{ color: '#94A3B8' }}>
+            <MapPin size={12} />
+            {project.location}
           </div>
         </div>
       </div>
-
-      {/* Info bar */}
-      <div className="px-5 py-4 flex items-center justify-between border-t border-charcoal-800/30">
-        <div>
-          <h3 className="font-bold text-slate-50 group-hover:text-lime-400 transition-colors">
-            {project.name}
-          </h3>
-          <p className="text-sm text-slate-400">{project.description}</p>
-        </div>
-        <div className="flex items-center gap-1.5 text-slate-400/60 text-xs flex-shrink-0 ml-3">
-          <MapPin size={12} />
-          {project.location}
-        </div>
-      </div>
-    </div>
-  </motion.div>
-);
+    </motion.div>
+  );
+}
 
 export default function Portfolio() {
   const { language } = useLanguage();
   const t = content[language];
 
   return (
-    <section id="portfolio" className="py-24 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto">
+    <section id="portfolio" className="py-24 px-6 relative">
+      <div className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="section-title">{t.title}</h2>
-          <p className="section-subtitle mx-auto">{t.subtitle}</p>
+          <h2 className="text-4xl md:text-5xl font-bold mb-4" style={{ color: '#F1F5F9' }}>
+            {t.title}
+          </h2>
+          <p className="text-lg" style={{ color: '#94A3B8' }}>
+            {t.subtitle}
+          </p>
         </motion.div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {t.projects.map((project, index) => (
-            <ProjectCard
-              key={index}
-              project={project}
-              index={index}
-              visitLabel={t.visit}
-            />
+          {t.projects.map((project, i) => (
+            <ProjectCard key={project.name} project={project} index={i} visitText={t.visit} />
           ))}
         </div>
       </div>
