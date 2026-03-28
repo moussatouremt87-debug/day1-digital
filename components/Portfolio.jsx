@@ -2,173 +2,102 @@
 
 import { useLanguage } from './LanguageContext';
 import { motion } from 'framer-motion';
-import { MapPin, ExternalLink } from 'lucide-react';
+import { MapPin } from 'lucide-react';
 
 const content = {
   fr: {
     title: 'Nos Realisations',
     subtitle: 'Projets qui transforment les visiteurs en clients',
-    visit: 'Voir le site',
     projects: [
       {
         name: 'FulFlo',
         description: 'E-commerce surplus marques premium',
         location: 'France',
-        accent: '#22C55E',
         tech: 'Next.js + Stripe',
-        url: 'https://www.fulflo.app/',
         screenshot: 'https://s.wordpress.com/mshots/v1/https%3A%2F%2Fwww.fulflo.app%2F?w=800&h=1500',
+        iframe: null,
       },
       {
         name: "Saint's Wings",
         description: 'Restaurant wings & burgers',
         location: 'Dubai',
-        accent: '#EAB308',
         tech: 'React + Headless CMS',
-        url: 'https://saintswings--moussatouremt87.replit.app/',
         screenshot: null,
+        iframe: 'https://saintswings--moussatouremt87.replit.app/',
       },
       {
         name: 'A.SAP Consulting',
         description: 'Conseil & integration SAP ERP',
         location: 'International',
-        accent: '#3B82F6',
         tech: 'Next.js + Tailwind',
-        url: 'https://sap-context--moussatouremt87.replit.app/',
         screenshot: 'https://s.wordpress.com/mshots/v1/https%3A%2F%2Fsap-context--moussatouremt87.replit.app%2F?w=800&h=1500',
+        iframe: null,
       },
       {
         name: 'Citere',
         description: 'Coaching interactif pour enfants',
         location: 'France',
-        accent: '#F59E0B',
         tech: 'React + Firebase',
-        url: null,
         screenshot: null,
+        iframe: null,
       },
       {
         name: 'Family Zen',
         description: 'Accompagnement familial',
         location: 'UAE',
-        accent: '#38BDF8',
         tech: 'Next.js + Supabase',
-        url: 'https://1001familles.com/',
         screenshot: 'https://s.wordpress.com/mshots/v1/https%3A%2F%2F1001familles.com%2F?w=800&h=1500',
+        iframe: null,
       },
     ],
   },
   en: {
     title: 'Our Work',
     subtitle: 'Projects that turn visitors into customers',
-    visit: 'Visit site',
     projects: [
       {
         name: 'FulFlo',
         description: 'Premium brand surplus e-commerce',
         location: 'France',
-        accent: '#22C55E',
         tech: 'Next.js + Stripe',
-        url: 'https://www.fulflo.app/',
         screenshot: 'https://s.wordpress.com/mshots/v1/https%3A%2F%2Fwww.fulflo.app%2F?w=800&h=1500',
+        iframe: null,
       },
       {
         name: "Saint's Wings",
         description: 'Wings & burgers restaurant',
         location: 'Dubai',
-        accent: '#EAB308',
         tech: 'React + Headless CMS',
-        url: 'https://saintswings--moussatouremt87.replit.app/',
         screenshot: null,
+        iframe: 'https://saintswings--moussatouremt87.replit.app/',
       },
       {
         name: 'A.SAP Consulting',
         description: 'SAP ERP consulting & integration',
         location: 'International',
-        accent: '#3B82F6',
         tech: 'Next.js + Tailwind',
-        url: 'https://sap-context--moussatouremt87.replit.app/',
         screenshot: 'https://s.wordpress.com/mshots/v1/https%3A%2F%2Fsap-context--moussatouremt87.replit.app%2F?w=800&h=1500',
+        iframe: null,
       },
       {
         name: 'Citere',
         description: 'Interactive coaching for kids',
         location: 'France',
-        accent: '#F59E0B',
         tech: 'React + Firebase',
-        url: null,
         screenshot: null,
+        iframe: null,
       },
       {
         name: 'Family Zen',
         description: 'Family support platform',
         location: 'UAE',
-        accent: '#38BDF8',
         tech: 'Next.js + Supabase',
-        url: 'https://1001familles.com/',
         screenshot: 'https://s.wordpress.com/mshots/v1/https%3A%2F%2F1001familles.com%2F?w=800&h=1500',
+        iframe: null,
       },
     ],
   },
 };
-
-// Saint's Wings placeholder - dark/gold neon aesthetic
-function SaintsWingsPlaceholder() {
-  return (
-    <div style={{
-      width: '100%',
-      height: '100%',
-      background: 'linear-gradient(180deg, #1a1008 0%, #0d0a04 50%, #1a1008 100%)',
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-      justifyContent: 'center',
-      position: 'relative',
-      overflow: 'hidden',
-    }}>
-      <div style={{
-        position: 'absolute',
-        top: '50%',
-        left: '50%',
-        transform: 'translate(-50%, -50%)',
-        width: '300px',
-        height: '300px',
-        background: 'radial-gradient(circle, rgba(234,179,8,0.15) 0%, transparent 70%)',
-        borderRadius: '50%',
-      }} />
-      <svg width="64" height="48" viewBox="0 0 64 48" fill="none" style={{ marginBottom: '12px', filter: 'drop-shadow(0 0 12px rgba(234,179,8,0.5))' }}>
-        <path d="M4 40L12 16L24 28L32 8L40 28L52 16L60 40H4Z" fill="url(#crownGrad)" stroke="#EAB308" strokeWidth="2"/>
-        <rect x="4" y="40" width="56" height="6" rx="2" fill="url(#crownGrad)"/>
-        <defs>
-          <linearGradient id="crownGrad" x1="32" y1="8" x2="32" y2="46" gradientUnits="userSpaceOnUse">
-            <stop stopColor="#FCD34D"/>
-            <stop offset="1" stopColor="#B45309"/>
-          </linearGradient>
-        </defs>
-      </svg>
-      <div style={{
-        fontFamily: 'Georgia, serif',
-        fontSize: '28px',
-        fontWeight: 'bold',
-        color: '#EAB308',
-        textShadow: '0 0 20px rgba(234,179,8,0.4), 0 0 40px rgba(234,179,8,0.2)',
-        letterSpacing: '6px',
-        marginBottom: '4px',
-      }}>
-        SAINT&apos;S WINGS
-      </div>
-      <div style={{
-        fontSize: '11px',
-        color: '#A8860A',
-        letterSpacing: '4px',
-        textTransform: 'uppercase',
-        fontFamily: 'Georgia, serif',
-      }}>
-        Strictly Business &middot; Dubai
-      </div>
-    </div>
-  );
-}
-
 // Citere placeholder - warm yellow education theme
 function CiterePlaceholder() {
   return (
@@ -212,7 +141,7 @@ function CiterePlaceholder() {
   );
 }
 
-// CSS keyframes injected via style tag
+// CSS keyframes for scroll preview animation
 const scrollAnimStyles = `
 @keyframes scrollPreview {
   0%, 10% { object-position: center top; }
@@ -223,21 +152,21 @@ const scrollAnimStyles = `
   height: 100%;
   object-fit: cover;
   object-position: center top;
-  transition: none;
 }
 .portfolio-card:hover .portfolio-screenshot {
   animation: scrollPreview 4s ease-in-out infinite alternate;
 }
-.portfolio-card:hover .portfolio-overlay-hint {
-  opacity: 0;
-}
 `;
 
-function ProjectCard({ project, index, visitText }) {
-  const isPlaceholder = !project.screenshot;
-  const isSaintsWings = project.name === "Saint's Wings";
+function ProjectCard({ project, index }) {
   const isCitere = project.name === 'Citere';
-  const displayUrl = project.url ? project.url.replace(/^https?:\/\//, '').replace(/\/$/, '') : (isCitere ? 'citere-edutech.org' : '');
+  const hasIframe = !!project.iframe;
+  const hasScreenshot = !!project.screenshot;
+  const displayUrl = hasIframe
+    ? project.iframe.replace(/^https?:\/\//, '').replace(/\/$/, '')
+    : hasScreenshot
+    ? decodeURIComponent(project.screenshot.split('/v1/')[1]?.split('?')[0] || '').replace(/^https?:\/\//, '').replace(/\/$/, '')
+    : isCitere ? 'citere-edutech.org' : '';
 
   return (
     <motion.div
@@ -245,7 +174,7 @@ function ProjectCard({ project, index, visitText }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ delay: index * 0.1 }}
-      className="group portfolio-card"
+      className="portfolio-card"
     >
       <div
         className="rounded-xl overflow-hidden"
@@ -269,47 +198,34 @@ function ProjectCard({ project, index, visitText }) {
           </div>
         </div>
 
-        {/* Screenshot area with scroll animation */}
+        {/* Screenshot / iframe / placeholder area */}
         <div className="relative" style={{ height: '220px', overflow: 'hidden' }}>
-          {isPlaceholder ? (
-            isSaintsWings ? <SaintsWingsPlaceholder /> : <CiterePlaceholder />
-          ) : (
-            <>
-              <img
-                src={project.screenshot}
-                alt={project.name}
-                className="portfolio-screenshot"
+          {hasIframe ? (
+            <div style={{ width: '100%', height: '100%', overflow: 'hidden', position: 'relative' }}>
+              <iframe
+                src={project.iframe}
+                title={project.name}
+                style={{
+                  width: '1200px',
+                  height: '800px',
+                  border: 'none',
+                  transform: 'scale(0.335)',
+                  transformOrigin: 'top left',
+                  pointerEvents: 'none',
+                }}
                 loading="lazy"
+                sandbox="allow-scripts allow-same-origin"
               />
-              {/* Hover hint */}
-              <div
-                className="portfolio-overlay-hint absolute bottom-2 right-2 px-2 py-1 rounded text-xs transition-opacity duration-300"
-                style={{ background: 'rgba(15, 23, 42, 0.7)', color: '#94A3B8' }}
-              >
-                Hover to preview
-              </div>
-            </>
-          )}
-
-          {/* Click overlay for visit */}
-          {project.url && (
-            <div
-              className="absolute inset-0 flex flex-col items-center justify-center gap-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-              style={{ background: 'rgba(15, 23, 42, 0.85)', pointerEvents: 'none' }}
-            >
-              <span className="text-sm font-medium" style={{ color: '#BEF264' }}>
-                {project.tech}
-              </span>
-              <a
-                href={project.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-colors"
-                style={{ background: '#84CC16', color: '#0F172A', pointerEvents: 'auto' }}
-              >
-                {visitText} <ExternalLink size={14} />
-              </a>
             </div>
+          ) : hasScreenshot ? (
+            <img
+              src={project.screenshot}
+              alt={project.name}
+              className="portfolio-screenshot"
+              loading="lazy"
+            />
+          ) : (
+            <CiterePlaceholder />
           )}
         </div>
 
@@ -339,7 +255,6 @@ export default function Portfolio() {
 
   return (
     <section id="portfolio" className="py-24 px-6 relative">
-      {/* Inject scroll animation styles */}
       <style dangerouslySetInnerHTML={{ __html: scrollAnimStyles }} />
 
       <div className="max-w-6xl mx-auto">
@@ -359,7 +274,7 @@ export default function Portfolio() {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {t.projects.map((project, i) => (
-            <ProjectCard key={project.name} project={project} index={i} visitText={t.visit} />
+            <ProjectCard key={project.name} project={project} index={i} />
           ))}
         </div>
       </div>
