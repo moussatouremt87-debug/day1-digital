@@ -1,5 +1,8 @@
+import Script from 'next/script';
 import { LanguageProvider } from '@/components/LanguageContext';
 import './globals.css';
+
+const GA_MEASUREMENT_ID = 'G-H0EKE47FEQ';
 
 export const metadata = {
   title: 'Day1.digital — Votre site pro en ligne dès le premier jour',
@@ -40,6 +43,20 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="fr" className="scroll-smooth">
+      <head>
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${GA_MEASUREMENT_ID}');
+          `}
+        </Script>
+      </head>
       <body>
         <LanguageProvider>{children}</LanguageProvider>
       </body>
