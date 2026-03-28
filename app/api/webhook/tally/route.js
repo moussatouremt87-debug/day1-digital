@@ -3,33 +3,9 @@ import { NextResponse } from 'next/server';
 const BREVO_API_KEY = process.env.BREVO_API_KEY;
 const BREVO_API_URL = 'https://api.brevo.com/v3';
 
-// Send transactional email via Brevo
 async function sendEmail({ to, toName, subject, htmlContent }) {
-  const res = await fetch(`${BREVO_API_URL}/smtp/email`, {
-    method: 'POST',
-    headers: {
-      accept: 'application/json',
-      'api-key': BREVO_API_KEY,
-      'content-type': 'application/json',
-    },
-    body: JSON.stringify({
-      sender: { name: 'Day1 Digital', email: 'moussatoure.mt.87@gmail.com' },
-      to: [{ email: to, name: toName }],
-      subject,
-      htmlContent,
-    }),
-  });
-  const data = await res.json();
-  if (!res.ok) {
-    console.error('Brevo email error:', JSON.stringify(data));
-  }
-  return data;
-}
-
-// Add or update contact in Brevo
-async function upsertContact({ email, firstName }) {
   try {
-    const res = await fetch(`${BREVO_API_URL}/contacts`, {
+    const res = await fetch(`${BREVO_API_URL}/smtp/email`, {
       method: 'POST',
       headers: {
         accept: 'application/json',
@@ -37,76 +13,32 @@ async function upsertContact({ email, firstName }) {
         'content-type': 'application/json',
       },
       body: JSON.stringify({
-        email,
-        attributes: { PRENOM: firstName },
-        listIds: [2],
-        updateEnabled: true,
+        sender: { name: 'Day1 Digital', email: 'moussatoure.mt.87@gmail.com' },
+        to: [{ email: to, name: toName }],
+        subject,
+        htmlContent,
       }),
     });
     const data = await res.json();
-    if (!res.ok) {
-      console.error('Brevo contact error:', JSON.stringify(data));
-    }
+    console.log('Email sent:', subject, res.ok ? 'OK' : JSON.stringify(data));
     return data;
   } catch (err) {
-    console.error('Contact upsert failed:', err.message);
-    return null;
+    console.error('Email error:', subject, err.message);
+    return { error: err.message };
   }
 }
 
-// Confirmation email HTML template
 function getConfirmationHTML(name, projectType, budget) {
-  return `
-    <div style="font-family: 'Segoe UI', Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #0a0a0a; color: #ffffff; border-radius: 12px; overflow: hidden;">
-      <div style="background: linear-gradient(135deg, #1a1a2e 0%, #0a0a0a 100%); padding: 40px 30px; text-align: center;">
-        <h1 style="color: #c8ff00; margin: 0; font-size: 28px;">Day1 Digital</h1>
-        <p style="color: #888; margin-top: 8px;">Agence web nouvelle generation</p>
-      </div>
-      <div style="padding: 30px;">
-        <h2 style="color: #c8ff00; font-size: 22px;">Merci ${name} !</h2>
-        <p style="color: #ccc; line-height: 1.6;">Nous avons bien recu votre demande de devis. Notre equipe l'examine et vous recontactera sous <strong style="color: #fff;">24 heures</strong>.</p>
-        <div style="background: #1a1a2e; border-radius: 8px; padding: 20px; margin: 20px 0;">
-          <p style="color: #888; margin: 0 0 8px;"><strong style="color: #c8ff00;">Projet :</strong> <span style="color: #fff;">${projectType || 'Non specifie'}</span></p>
-          <p style="color: #888; margin: 0;"><strong style="color: #c8ff00;">Budget :</strong> <span style="color: #fff;">${budget || 'Non specifie'}</span></p>
-        </div>
-        <p style="color: #ccc; line-height: 1.6;">En attendant, n'hesitez pas a reserver un appel decouverte gratuit :</p>
-        <a href="https://cal.com/moussa-toure-day1/30min" style="display: inline-block; background: #c8ff00; color: #0a0a0a; text-decoration: none; padding: 12px 28px; border-radius: 8px; font-weight: bold; margin-top: 10px;">Reserver un appel</a>
-      </div>
-      <div style="padding: 20px 30px; text-align: center; border-top: 1px solid #222;">
-        <p style="color: #666; font-size: 13px; margin: 0;">2026 Day1 Digital - www.day1-digital.com</p>
-      </div>
-    </div>
-  `;
+  return '<div style="font-family:Segoe UI,Arial,sans-serif;max-width:600px;margin:0 auto;background:#0a0a0a;color:#fff;border-radius:12px;overflow:hidden"><div style="background:linear-gradient(135deg,#1a1a2e,#0a0a0a);padding:40px 30px;text-align:center"><h1 style="color:#c8ff00;margin:0;font-size:28px">Day1 Digital</h1><p style="color:#888;margin-top:8px">Agence web nouvelle generation</p></div><div style="padding:30px"><h2 style="color:#c8ff00;font-size:22px">Merci ' + name + ' !</h2><p style="color:#ccc;line-height:1.6">Nous avons bien recu votre demande de devis. Notre equipe l examine et vous recontactera sous <strong style="color:#fff">24 heures</strong>.</p><div style="background:#1a1a2e;border-radius:8px;padding:20px;margin:20px 0"><p style="color:#888;margin:0 0 8px"><strong style="color:#c8ff00">Projet :</strong> <span style="color:#fff">' + (projectType || 'Non specifie') + '</span></p><p style="color:#888;margin:0"><strong style="color:#c8ff00">Budget :</strong> <span style="color:#fff">' + (budget || 'Non specifie') + '</span></p></div><p style="color:#ccc;line-height:1.6">En attendant, reservez un appel decouverte gratuit :</p><a href="https://cal.com/moussa-toure-day1/30min" style="display:inline-block;background:#c8ff00;color:#0a0a0a;text-decoration:none;padding:12px 28px;border-radius:8px;font-weight:bold;margin-top:10px">Reserver un appel</a></div><div style="padding:20px 30px;text-align:center;border-top:1px solid #222"><p style="color:#666;font-size:13px;margin:0">2026 Day1 Digital - www.day1-digital.com</p></div></div>';
 }
 
-// Welcome email HTML template
 function getWelcomeHTML(name) {
-  return `
-    <div style="font-family: 'Segoe UI', Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #0a0a0a; color: #ffffff; border-radius: 12px; overflow: hidden;">
-      <div style="background: linear-gradient(135deg, #1a1a2e 0%, #0a0a0a 100%); padding: 40px 30px; text-align: center;">
-        <h1 style="color: #c8ff00; margin: 0; font-size: 28px;">Day1 Digital</h1>
-        <p style="color: #888; margin-top: 8px;">Bienvenue dans la communaute !</p>
-      </div>
-      <div style="padding: 30px;">
-        <h2 style="color: #c8ff00; font-size: 22px;">Bonjour ${name} !</h2>
-        <p style="color: #ccc; line-height: 1.6;">Merci de nous avoir contactes. Vous faites desormais partie de la communaute Day1 Digital.</p>
-        <p style="color: #ccc; line-height: 1.6;">Vous recevrez nos conseils exclusifs sur le web design, le SEO et les meilleures pratiques pour booster votre presence en ligne.</p>
-        <div style="text-align: center; margin-top: 20px;">
-          <a href="https://www.day1-digital.com" style="display: inline-block; background: #c8ff00; color: #0a0a0a; text-decoration: none; padding: 12px 28px; border-radius: 8px; font-weight: bold;">Decouvrir nos services</a>
-        </div>
-      </div>
-      <div style="padding: 20px 30px; text-align: center; border-top: 1px solid #222;">
-        <p style="color: #666; font-size: 13px; margin: 0;">2026 Day1 Digital - www.day1-digital.com</p>
-      </div>
-    </div>
-  `;
+  return '<div style="font-family:Segoe UI,Arial,sans-serif;max-width:600px;margin:0 auto;background:#0a0a0a;color:#fff;border-radius:12px;overflow:hidden"><div style="background:linear-gradient(135deg,#1a1a2e,#0a0a0a);padding:40px 30px;text-align:center"><h1 style="color:#c8ff00;margin:0;font-size:28px">Day1 Digital</h1><p style="color:#888;margin-top:8px">Bienvenue dans la communaute !</p></div><div style="padding:30px"><h2 style="color:#c8ff00;font-size:22px">Bonjour ' + name + ' !</h2><p style="color:#ccc;line-height:1.6">Merci de nous avoir contactes. Vous faites desormais partie de la communaute Day1 Digital.</p><p style="color:#ccc;line-height:1.6">Vous recevrez nos conseils exclusifs sur le web design, le SEO et les meilleures pratiques pour booster votre presence en ligne.</p><div style="text-align:center;margin-top:20px"><a href="https://www.day1-digital.com" style="display:inline-block;background:#c8ff00;color:#0a0a0a;text-decoration:none;padding:12px 28px;border-radius:8px;font-weight:bold">Decouvrir nos services</a></div></div><div style="padding:20px 30px;text-align:center;border-top:1px solid #222"><p style="color:#666;font-size:13px;margin:0">2026 Day1 Digital - www.day1-digital.com</p></div></div>';
 }
 
 export async function POST(request) {
   try {
     const payload = await request.json();
-    console.log('Tally webhook received:', JSON.stringify(payload).substring(0, 500));
-
     const fields = payload.data?.fields || [];
 
     const getField = (label) => {
@@ -121,47 +53,54 @@ export async function POST(request) {
     const description = getField('Decrivez votre projet');
 
     if (!email) {
-      console.error('No email found in fields:', JSON.stringify(fields));
       return NextResponse.json({ error: 'Email is required' }, { status: 400 });
     }
 
-    console.log('Processing for:', email, name);
+    console.log('Webhook received for:', email, name);
 
-    // 1. Add contact to Brevo (non-blocking)
-    upsertContact({ email, firstName: name }).catch((e) =>
-      console.error('Contact error:', e)
-    );
+    // Send all emails in PARALLEL to stay within 10s timeout
+    const results = await Promise.allSettled([
+      sendEmail({
+        to: email,
+        toName: name,
+        subject: 'Votre demande de devis - Day1 Digital',
+        htmlContent: getConfirmationHTML(name, projectType, budget),
+      }),
+      sendEmail({
+        to: email,
+        toName: name,
+        subject: 'Bienvenue chez Day1 Digital !',
+        htmlContent: getWelcomeHTML(name),
+      }),
+      sendEmail({
+        to: 'moussatoure.mt.87@gmail.com',
+        toName: 'Moussa',
+        subject: 'Nouveau devis: ' + name + ' - ' + projectType,
+        htmlContent: '<h2>Nouvelle demande de devis</h2><p><strong>Nom:</strong> ' + name + '</p><p><strong>Email:</strong> ' + email + '</p><p><strong>Type:</strong> ' + projectType + '</p><p><strong>Budget:</strong> ' + budget + '</p><p><strong>Description:</strong> ' + description + '</p>',
+      }),
+    ]);
 
-    // 2. Send confirmation email
-    const confirmResult = await sendEmail({
-      to: email,
-      toName: name,
-      subject: 'Votre demande de devis - Day1 Digital',
-      htmlContent: getConfirmationHTML(name, projectType, budget),
-    });
-    console.log('Confirmation email result:', JSON.stringify(confirmResult));
+    console.log('Email results:', JSON.stringify(results.map(r => r.status)));
 
-    // 3. Send welcome email
-    const welcomeResult = await sendEmail({
-      to: email,
-      toName: name,
-      subject: 'Bienvenue chez Day1 Digital !',
-      htmlContent: getWelcomeHTML(name),
-    });
-    console.log('Welcome email result:', JSON.stringify(welcomeResult));
-
-    // 4. Notify owner
-    const notifyResult = await sendEmail({
-      to: 'moussatoure.mt.87@gmail.com',
-      toName: 'Moussa',
-      subject: 'Nouveau devis: ' + name + ' - ' + projectType,
-      htmlContent: '<h2>Nouvelle demande de devis</h2><p><strong>Nom:</strong> ' + name + '</p><p><strong>Email:</strong> ' + email + '</p><p><strong>Type:</strong> ' + projectType + '</p><p><strong>Budget:</strong> ' + budget + '</p><p><strong>Description:</strong> ' + description + '</p>',
-    });
-    console.log('Notify email result:', JSON.stringify(notifyResult));
+    // Upsert contact non-blocking (fire and forget)
+    fetch(`${BREVO_API_URL}/contacts`, {
+      method: 'POST',
+      headers: {
+        accept: 'application/json',
+        'api-key': BREVO_API_KEY,
+        'content-type': 'application/json',
+      },
+      body: JSON.stringify({
+        email,
+        attributes: { PRENOM: name },
+        listIds: [2],
+        updateEnabled: true,
+      }),
+    }).catch(() => {});
 
     return NextResponse.json({ success: true });
   } catch (error) {
-    console.error('Webhook error:', error.message, error.stack);
+    console.error('Webhook error:', error.message);
     return NextResponse.json(
       { error: 'Internal server error', details: error.message },
       { status: 500 }
