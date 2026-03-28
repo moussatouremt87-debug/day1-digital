@@ -34,6 +34,17 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  useEffect(() => {
+    // Load Tally embed script
+    const existing = document.querySelector('script[src*="tally.so"]');
+    if (!existing) {
+      const script = document.createElement('script');
+      script.src = 'https://tally.so/widgets/embed.js';
+      script.async = true;
+      document.head.appendChild(script);
+    }
+  }, []);
+
   const scrollToSection = (id) => {
     const element = document.getElementById(id);
     if (element) {
@@ -94,6 +105,8 @@ export default function Navbar() {
             <motion.button
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
+              data-tally-open="EkLGQr"
+              data-tally-layout="modal"
               className="hidden md:block btn-primary text-sm"
             >
               {t.cta}
@@ -132,7 +145,13 @@ export default function Navbar() {
                   </motion.button>
                 ))}
                 <div className="px-4 pt-2">
-                  <button className="btn-primary w-full">{t.cta}</button>
+                  <button
+                    data-tally-open="EkLGQr"
+                    data-tally-layout="modal"
+                    className="btn-primary w-full"
+                  >
+                    {t.cta}
+                  </button>
                 </div>
               </div>
             </motion.div>
