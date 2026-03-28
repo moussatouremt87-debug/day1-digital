@@ -17,7 +17,7 @@ const content = {
         accent: '#22C55E',
         tech: 'Next.js + Stripe',
         url: 'https://www.fulflo.app/',
-        screenshot: 'https://s.wordpress.com/mshots/v1/https%3A%2F%2Fwww.fulflo.app%2F?w=800&h=500',
+        screenshot: 'https://s.wordpress.com/mshots/v1/https%3A%2F%2Fwww.fulflo.app%2F?w=800&h=1500',
       },
       {
         name: "Saint's Wings",
@@ -35,7 +35,7 @@ const content = {
         accent: '#3B82F6',
         tech: 'Next.js + Tailwind',
         url: 'https://sap-context--moussatouremt87.replit.app/',
-        screenshot: 'https://s.wordpress.com/mshots/v1/https%3A%2F%2Fsap-context--moussatouremt87.replit.app%2F?w=800&h=500',
+        screenshot: 'https://s.wordpress.com/mshots/v1/https%3A%2F%2Fsap-context--moussatouremt87.replit.app%2F?w=800&h=1500',
       },
       {
         name: 'Citere',
@@ -53,7 +53,7 @@ const content = {
         accent: '#38BDF8',
         tech: 'Next.js + Supabase',
         url: 'https://1001familles.com/',
-        screenshot: 'https://s.wordpress.com/mshots/v1/https%3A%2F%2F1001familles.com%2F?w=800&h=500',
+        screenshot: 'https://s.wordpress.com/mshots/v1/https%3A%2F%2F1001familles.com%2F?w=800&h=1500',
       },
     ],
   },
@@ -69,7 +69,7 @@ const content = {
         accent: '#22C55E',
         tech: 'Next.js + Stripe',
         url: 'https://www.fulflo.app/',
-        screenshot: 'https://s.wordpress.com/mshots/v1/https%3A%2F%2Fwww.fulflo.app%2F?w=800&h=500',
+        screenshot: 'https://s.wordpress.com/mshots/v1/https%3A%2F%2Fwww.fulflo.app%2F?w=800&h=1500',
       },
       {
         name: "Saint's Wings",
@@ -87,7 +87,7 @@ const content = {
         accent: '#3B82F6',
         tech: 'Next.js + Tailwind',
         url: 'https://sap-context--moussatouremt87.replit.app/',
-        screenshot: 'https://s.wordpress.com/mshots/v1/https%3A%2F%2Fsap-context--moussatouremt87.replit.app%2F?w=800&h=500',
+        screenshot: 'https://s.wordpress.com/mshots/v1/https%3A%2F%2Fsap-context--moussatouremt87.replit.app%2F?w=800&h=1500',
       },
       {
         name: 'Citere',
@@ -105,13 +105,13 @@ const content = {
         accent: '#38BDF8',
         tech: 'Next.js + Supabase',
         url: 'https://1001familles.com/',
-        screenshot: 'https://s.wordpress.com/mshots/v1/https%3A%2F%2F1001familles.com%2F?w=800&h=500',
+        screenshot: 'https://s.wordpress.com/mshots/v1/https%3A%2F%2F1001familles.com%2F?w=800&h=1500',
       },
     ],
   },
 };
 
-// Saint's Wings placeholder - dark/gold neon aesthetic matching real site
+// Saint's Wings placeholder - dark/gold neon aesthetic
 function SaintsWingsPlaceholder() {
   return (
     <div style={{
@@ -125,7 +125,6 @@ function SaintsWingsPlaceholder() {
       position: 'relative',
       overflow: 'hidden',
     }}>
-      {/* Neon glow background */}
       <div style={{
         position: 'absolute',
         top: '50%',
@@ -136,7 +135,6 @@ function SaintsWingsPlaceholder() {
         background: 'radial-gradient(circle, rgba(234,179,8,0.15) 0%, transparent 70%)',
         borderRadius: '50%',
       }} />
-      {/* Crown SVG */}
       <svg width="64" height="48" viewBox="0 0 64 48" fill="none" style={{ marginBottom: '12px', filter: 'drop-shadow(0 0 12px rgba(234,179,8,0.5))' }}>
         <path d="M4 40L12 16L24 28L32 8L40 28L52 16L60 40H4Z" fill="url(#crownGrad)" stroke="#EAB308" strokeWidth="2"/>
         <rect x="4" y="40" width="56" height="6" rx="2" fill="url(#crownGrad)"/>
@@ -147,7 +145,6 @@ function SaintsWingsPlaceholder() {
           </linearGradient>
         </defs>
       </svg>
-      {/* SW DXB text */}
       <div style={{
         fontFamily: 'Georgia, serif',
         fontSize: '28px',
@@ -155,11 +152,10 @@ function SaintsWingsPlaceholder() {
         color: '#EAB308',
         textShadow: '0 0 20px rgba(234,179,8,0.4), 0 0 40px rgba(234,179,8,0.2)',
         letterSpacing: '6px',
-        marginBottom: '6px',
+        marginBottom: '4px',
       }}>
-        SW <span style={{ color: '#94A3B8', fontSize: '16px', fontWeight: 'normal' }}>DXB</span>
+        SAINT&apos;S WINGS
       </div>
-      {/* Tagline */}
       <div style={{
         fontSize: '11px',
         color: '#A8860A',
@@ -167,16 +163,7 @@ function SaintsWingsPlaceholder() {
         textTransform: 'uppercase',
         fontFamily: 'Georgia, serif',
       }}>
-        Strictly Business
-      </div>
-      {/* Domain */}
-      <div style={{
-        marginTop: '16px',
-        fontSize: '12px',
-        color: '#92400E',
-        fontFamily: 'monospace',
-      }}>
-        saintswings.dxb
+        Strictly Business &middot; Dubai
       </div>
     </div>
   );
@@ -225,6 +212,27 @@ function CiterePlaceholder() {
   );
 }
 
+// CSS keyframes injected via style tag
+const scrollAnimStyles = `
+@keyframes scrollPreview {
+  0%, 10% { object-position: center top; }
+  90%, 100% { object-position: center bottom; }
+}
+.portfolio-screenshot {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  transition: none;
+}
+.portfolio-card:hover .portfolio-screenshot {
+  animation: scrollPreview 4s ease-in-out infinite alternate;
+}
+.portfolio-card:hover .portfolio-overlay-hint {
+  opacity: 0;
+}
+`;
+
 function ProjectCard({ project, index, visitText }) {
   const isPlaceholder = !project.screenshot;
   const isSaintsWings = project.name === "Saint's Wings";
@@ -237,7 +245,7 @@ function ProjectCard({ project, index, visitText }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ delay: index * 0.1 }}
-      className="group"
+      className="group portfolio-card"
     >
       <div
         className="rounded-xl overflow-hidden"
@@ -261,24 +269,33 @@ function ProjectCard({ project, index, visitText }) {
           </div>
         </div>
 
-        {/* Screenshot area */}
+        {/* Screenshot area with scroll animation */}
         <div className="relative" style={{ height: '220px', overflow: 'hidden' }}>
           {isPlaceholder ? (
             isSaintsWings ? <SaintsWingsPlaceholder /> : <CiterePlaceholder />
           ) : (
-            <img
-              src={project.screenshot}
-              alt={project.name}
-              style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top' }}
-              loading="lazy"
-            />
+            <>
+              <img
+                src={project.screenshot}
+                alt={project.name}
+                className="portfolio-screenshot"
+                loading="lazy"
+              />
+              {/* Hover hint */}
+              <div
+                className="portfolio-overlay-hint absolute bottom-2 right-2 px-2 py-1 rounded text-xs transition-opacity duration-300"
+                style={{ background: 'rgba(15, 23, 42, 0.7)', color: '#94A3B8' }}
+              >
+                Hover to preview
+              </div>
+            </>
           )}
 
-          {/* Hover overlay */}
+          {/* Click overlay for visit */}
           {project.url && (
             <div
               className="absolute inset-0 flex flex-col items-center justify-center gap-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-              style={{ background: 'rgba(15, 23, 42, 0.85)' }}
+              style={{ background: 'rgba(15, 23, 42, 0.85)', pointerEvents: 'none' }}
             >
               <span className="text-sm font-medium" style={{ color: '#BEF264' }}>
                 {project.tech}
@@ -288,7 +305,7 @@ function ProjectCard({ project, index, visitText }) {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-colors"
-                style={{ background: '#84CC16', color: '#0F172A' }}
+                style={{ background: '#84CC16', color: '#0F172A', pointerEvents: 'auto' }}
               >
                 {visitText} <ExternalLink size={14} />
               </a>
@@ -322,6 +339,9 @@ export default function Portfolio() {
 
   return (
     <section id="portfolio" className="py-24 px-6 relative">
+      {/* Inject scroll animation styles */}
+      <style dangerouslySetInnerHTML={{ __html: scrollAnimStyles }} />
+
       <div className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
