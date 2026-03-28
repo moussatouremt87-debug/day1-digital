@@ -17,7 +17,7 @@ const content = {
         accent: '#22C55E',
         tech: 'Next.js + Stripe',
         url: 'https://www.fulflo.app/',
-        screenshot: 'https://image.thum.io/get/width/800/crop/500/https://www.fulflo.app/',
+        screenshot: 'https://s.wordpress.com/mshots/v1/https%3A%2F%2Fwww.fulflo.app%2F?w=800&h=500',
       },
       {
         name: "Saint's Wings",
@@ -26,7 +26,7 @@ const content = {
         accent: '#EAB308',
         tech: 'React + Headless CMS',
         url: 'https://wingsaints.com/',
-        screenshot: 'https://image.thum.io/get/width/800/crop/500/https://wingsaints.com/',
+        screenshot: 'https://s.wordpress.com/mshots/v1/https%3A%2F%2Fwingsaints.com%2F?w=800&h=500',
       },
       {
         name: 'A.SAP Consulting',
@@ -35,7 +35,7 @@ const content = {
         accent: '#3B82F6',
         tech: 'Next.js + Tailwind',
         url: 'https://sap-context--moussatouremt87.replit.app/',
-        screenshot: 'https://image.thum.io/get/width/800/crop/500/https://sap-context--moussatouremt87.replit.app/',
+        screenshot: 'https://s.wordpress.com/mshots/v1/https%3A%2F%2Fsap-context--moussatouremt87.replit.app%2F?w=800&h=500',
       },
       {
         name: 'Citere',
@@ -53,7 +53,7 @@ const content = {
         accent: '#38BDF8',
         tech: 'Next.js + Supabase',
         url: 'https://1001familles.com/',
-        screenshot: 'https://image.thum.io/get/width/800/crop/500/https://1001familles.com/',
+        screenshot: 'https://s.wordpress.com/mshots/v1/https%3A%2F%2F1001familles.com%2F?w=800&h=500',
       },
     ],
   },
@@ -69,7 +69,7 @@ const content = {
         accent: '#22C55E',
         tech: 'Next.js + Stripe',
         url: 'https://www.fulflo.app/',
-        screenshot: 'https://image.thum.io/get/width/800/crop/500/https://www.fulflo.app/',
+        screenshot: 'https://s.wordpress.com/mshots/v1/https%3A%2F%2Fwww.fulflo.app%2F?w=800&h=500',
       },
       {
         name: "Saint's Wings",
@@ -78,7 +78,7 @@ const content = {
         accent: '#EAB308',
         tech: 'React + Headless CMS',
         url: 'https://wingsaints.com/',
-        screenshot: 'https://image.thum.io/get/width/800/crop/500/https://wingsaints.com/',
+        screenshot: 'https://s.wordpress.com/mshots/v1/https%3A%2F%2Fwingsaints.com%2F?w=800&h=500',
       },
       {
         name: 'A.SAP Consulting',
@@ -87,7 +87,7 @@ const content = {
         accent: '#3B82F6',
         tech: 'Next.js + Tailwind',
         url: 'https://sap-context--moussatouremt87.replit.app/',
-        screenshot: 'https://image.thum.io/get/width/800/crop/500/https://sap-context--moussatouremt87.replit.app/',
+        screenshot: 'https://s.wordpress.com/mshots/v1/https%3A%2F%2Fsap-context--moussatouremt87.replit.app%2F?w=800&h=500',
       },
       {
         name: 'Citere',
@@ -105,7 +105,7 @@ const content = {
         accent: '#38BDF8',
         tech: 'Next.js + Supabase',
         url: 'https://1001familles.com/',
-        screenshot: 'https://image.thum.io/get/width/800/crop/500/https://1001familles.com/',
+        screenshot: 'https://s.wordpress.com/mshots/v1/https%3A%2F%2F1001familles.com%2F?w=800&h=500',
       },
     ],
   },
