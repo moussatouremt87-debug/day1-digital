@@ -1,19 +1,22 @@
 'use client';
 
+import { useEffect } from 'react';
 import { useLanguage } from './LanguageContext';
 import { motion } from 'framer-motion';
-import { ArrowRight, Rocket } from 'lucide-react';
+import { ArrowRight, Rocket, Calendar } from 'lucide-react';
 
 const content = {
   fr: {
     title: 'Pret a lancer votre projet?',
     subtitle: 'Commencez des maintenant et obtenez votre site en 48h.',
     cta: 'Demander un devis gratuit',
+    calBtn: 'Reserver un appel decouverte',
   },
   en: {
     title: 'Ready to launch your project?',
     subtitle: 'Get started now and have your website in 48 hours.',
     cta: 'Get a free quote',
+    calBtn: 'Book a discovery call',
   },
 };
 
@@ -21,8 +24,19 @@ export default function FooterCTA() {
   const { language } = useLanguage();
   const t = content[language];
 
+  useEffect(() => {
+    // Load Tally embed script
+    const existing = document.querySelector('script[src*="tally.so"]');
+    if (!existing) {
+      const script = document.createElement('script');
+      script.src = 'https://tally.so/widgets/embed.js';
+      script.async = true;
+      document.head.appendChild(script);
+    }
+  }, []);
+
   return (
-    <section className="py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+    <section id="contact" className="py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
       {/* Background glow */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(132,204,22,0.06)_0%,transparent_70%)]" />
 
@@ -62,14 +76,34 @@ export default function FooterCTA() {
             <p className="text-slate-400 text-lg md:text-xl mb-10 max-w-2xl mx-auto">
               {t.subtitle}
             </p>
-            <motion.button
-              whileHover={{ scale: 1.03 }}
-              whileTap={{ scale: 0.97 }}
-              className="btn-primary group inline-flex items-center gap-2 text-base"
-            >
-              {t.cta}
-              <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-            </motion.button>
+
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              {/* Tally popup button */}
+              <motion.button
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.97 }}
+                data-tally-open="EkLGQr"
+                data-tally-layout="modal"
+                data-tally-auto-close="3000"
+                className="btn-primary group inline-flex items-center gap-2 text-base"
+              >
+                {t.cta}
+                <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+              </motion.button>
+
+              {/* Cal.com booking link */}
+              <motion.a
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.97 }}
+                href="https://cal.com/moussa-toure-day1/30min"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group inline-flex items-center gap-2 text-base px-8 py-3 rounded-full border border-lime-500/30 text-lime-400 hover:bg-lime-500/10 transition-colors"
+              >
+                <Calendar size={18} />
+                {t.calBtn}
+              </motion.a>
+            </div>
           </div>
         </motion.div>
       </div>
