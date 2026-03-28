@@ -8,7 +8,7 @@ async function sendEmail({ to, toName, subject, htmlContent }) {
   const res = await fetch(`${BREVO_API_URL}/smtp/email`, {
     method: 'POST',
     headers: {
-      'accept': 'application/json',
+      accept: 'application/json',
       'api-key': BREVO_API_KEY,
       'content-type': 'application/json',
     },
@@ -19,26 +19,39 @@ async function sendEmail({ to, toName, subject, htmlContent }) {
       htmlContent,
     }),
   });
-  return res.json();
+  const data = await res.json();
+  if (!res.ok) {
+    console.error('Brevo email error:', JSON.stringify(data));
+  }
+  return data;
 }
 
 // Add or update contact in Brevo
-async function upsertContact({ email, firstName, attributes, listIds }) {
-  const res = await fetch(`${BREVO_API_URL}/contacts`, {
-    method: 'POST',
-    headers: {
-      'accept': 'application/json',
-      'api-key': BREVO_API_KEY,
-      'content-type': 'application/json',
-    },
-    body: JSON.stringify({
-      email,
-      attributes: { PRENOM: firstName, ...attributes },
-      listIds: listIds || [2],
-      updateEnabled: true,
-    }),
-  });
-  return res.json();
+async function upsertContact({ email, firstName }) {
+  try {
+    const res = await fetch(`${BREVO_API_URL}/contacts`, {
+      method: 'POST',
+      headers: {
+        accept: 'application/json',
+        'api-key': BREVO_API_KEY,
+        'content-type': 'application/json',
+      },
+      body: JSON.stringify({
+        email,
+        attributes: { PRENOM: firstName },
+        listIds: [2],
+        updateEnabled: true,
+      }),
+    });
+    const data = await res.json();
+    if (!res.ok) {
+      console.error('Brevo contact error:', JSON.stringify(data));
+    }
+    return data;
+  } catch (err) {
+    console.error('Contact upsert failed:', err.message);
+    return null;
+  }
 }
 
 // Confirmation email HTML template
@@ -47,20 +60,20 @@ function getConfirmationHTML(name, projectType, budget) {
     <div style="font-family: 'Segoe UI', Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #0a0a0a; color: #ffffff; border-radius: 12px; overflow: hidden;">
       <div style="background: linear-gradient(135deg, #1a1a2e 0%, #0a0a0a 100%); padding: 40px 30px; text-align: center;">
         <h1 style="color: #c8ff00; margin: 0; font-size: 28px;">Day1 Digital</h1>
-        <p style="color: #888; margin-top: 8px;">Agence web nouvelle génération</p>
+        <p style="color: #888; margin-top: 8px;">Agence web nouvelle generation</p>
       </div>
       <div style="padding: 30px;">
         <h2 style="color: #c8ff00; font-size: 22px;">Merci ${name} !</h2>
-        <p style="color: #ccc; line-height: 1.6;">Nous avons bien reçu votre demande de devis. Notre équipe l'examine et vous recontactera sous <strong style="color: #fff;">24 heures</strong>.</p>
+        <p style="color: #ccc; line-height: 1.6;">Nous avons bien recu votre demande de devis. Notre equipe l'examine et vous recontactera sous <strong style="color: #fff;">24 heures</strong>.</p>
         <div style="background: #1a1a2e; border-radius: 8px; padding: 20px; margin: 20px 0;">
-          <p style="color: #888; margin: 0 0 8px;"><strong style="color: #c8ff00;">Projet :</strong> <span style="color: #fff;">${projectType}</span></p>
-          <p style="color: #888; margin: 0;"><strong style="color: #c8ff00;">Budget :</strong> <span style="color: #fff;">${budget}</span></p>
+          <p style="color: #888; margin: 0 0 8px;"><strong style="color: #c8ff00;">Projet :</strong> <span style="color: #fff;">${projectType || 'Non specifie'}</span></p>
+          <p style="color: #888; margin: 0;"><strong style="color: #c8ff00;">Budget :</strong> <span style="color: #fff;">${budget || 'Non specifie'}</span></p>
         </div>
-        <p style="color: #ccc; line-height: 1.6;">En attendant, n'hésitez pas à réserver un appel découverte gratuit :</p>
-        <a href="https://cal.com/moussa-toure-day1/30min" style="display: inline-block; background: #c8ff00; color: #0a0a0a; text-decoration: none; padding: 12px 28px; border-radius: 8px; font-weight: bold; margin-top: 10px;">Réserver un appel</a>
+        <p style="color: #ccc; line-height: 1.6;">En attendant, n'hesitez pas a reserver un appel decouverte gratuit :</p>
+        <a href="https://cal.com/moussa-toure-day1/30min" style="display: inline-block; background: #c8ff00; color: #0a0a0a; text-decoration: none; padding: 12px 28px; border-radius: 8px; font-weight: bold; margin-top: 10px;">Reserver un appel</a>
       </div>
       <div style="padding: 20px 30px; text-align: center; border-top: 1px solid #222;">
-        <p style="color: #666; font-size: 13px; margin: 0;">© 2026 Day1 Digital — www.day1-digital.com</p>
+        <p style="color: #666; font-size: 13px; margin: 0;">2026 Day1 Digital - www.day1-digital.com</p>
       </div>
     </div>
   `;
@@ -72,18 +85,18 @@ function getWelcomeHTML(name) {
     <div style="font-family: 'Segoe UI', Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #0a0a0a; color: #ffffff; border-radius: 12px; overflow: hidden;">
       <div style="background: linear-gradient(135deg, #1a1a2e 0%, #0a0a0a 100%); padding: 40px 30px; text-align: center;">
         <h1 style="color: #c8ff00; margin: 0; font-size: 28px;">Day1 Digital</h1>
-        <p style="color: #888; margin-top: 8px;">Bienvenue dans la communauté !</p>
+        <p style="color: #888; margin-top: 8px;">Bienvenue dans la communaute !</p>
       </div>
       <div style="padding: 30px;">
         <h2 style="color: #c8ff00; font-size: 22px;">Bonjour ${name} !</h2>
-        <p style="color: #ccc; line-height: 1.6;">Merci de nous avoir contactés. Vous faites désormais partie de la communauté Day1 Digital.</p>
-        <p style="color: #ccc; line-height: 1.6;">Vous recevrez nos conseils exclusifs sur le web design, le SEO et les meilleures pratiques pour booster votre présence en ligne.</p>
+        <p style="color: #ccc; line-height: 1.6;">Merci de nous avoir contactes. Vous faites desormais partie de la communaute Day1 Digital.</p>
+        <p style="color: #ccc; line-height: 1.6;">Vous recevrez nos conseils exclusifs sur le web design, le SEO et les meilleures pratiques pour booster votre presence en ligne.</p>
         <div style="text-align: center; margin-top: 20px;">
-          <a href="https://www.day1-digital.com" style="display: inline-block; background: #c8ff00; color: #0a0a0a; text-decoration: none; padding: 12px 28px; border-radius: 8px; font-weight: bold;">Découvrir nos services</a>
+          <a href="https://www.day1-digital.com" style="display: inline-block; background: #c8ff00; color: #0a0a0a; text-decoration: none; padding: 12px 28px; border-radius: 8px; font-weight: bold;">Decouvrir nos services</a>
         </div>
       </div>
       <div style="padding: 20px 30px; text-align: center; border-top: 1px solid #222;">
-        <p style="color: #666; font-size: 13px; margin: 0;">© 2026 Day1 Digital — www.day1-digital.com</p>
+        <p style="color: #666; font-size: 13px; margin: 0;">2026 Day1 Digital - www.day1-digital.com</p>
       </div>
     </div>
   `;
@@ -92,69 +105,66 @@ function getWelcomeHTML(name) {
 export async function POST(request) {
   try {
     const payload = await request.json();
+    console.log('Tally webhook received:', JSON.stringify(payload).substring(0, 500));
+
     const fields = payload.data?.fields || [];
 
-    // Extract form fields from Tally payload
     const getField = (label) => {
       const field = fields.find((f) => f.label === label);
       return field?.value || '';
     };
 
-    const name = getField('Nom complet');
+    const name = getField('Nom complet') || 'Visiteur';
     const email = getField('Email');
     const projectType = getField('Type de projet');
     const budget = getField('Budget');
-    const description = getField('Décrivez votre projet');
+    const description = getField('Decrivez votre projet');
 
     if (!email) {
+      console.error('No email found in fields:', JSON.stringify(fields));
       return NextResponse.json({ error: 'Email is required' }, { status: 400 });
     }
 
-    // 1. Add contact to Brevo
-    await upsertContact({
-      email,
-      firstName: name,
-      attributes: {
-        TYPE_PROJET: projectType,
-        BUDGET: budget,
-        DESCRIPTION: description,
-      },
-    });
+    console.log('Processing for:', email, name);
+
+    // 1. Add contact to Brevo (non-blocking)
+    upsertContact({ email, firstName: name }).catch((e) =>
+      console.error('Contact error:', e)
+    );
 
     // 2. Send confirmation email
-    await sendEmail({
+    const confirmResult = await sendEmail({
       to: email,
       toName: name,
       subject: 'Votre demande de devis - Day1 Digital',
       htmlContent: getConfirmationHTML(name, projectType, budget),
     });
+    console.log('Confirmation email result:', JSON.stringify(confirmResult));
 
     // 3. Send welcome email
-    await sendEmail({
+    const welcomeResult = await sendEmail({
       to: email,
       toName: name,
       subject: 'Bienvenue chez Day1 Digital !',
       htmlContent: getWelcomeHTML(name),
     });
+    console.log('Welcome email result:', JSON.stringify(welcomeResult));
 
     // 4. Notify owner
-    await sendEmail({
+    const notifyResult = await sendEmail({
       to: 'moussatoure.mt.87@gmail.com',
       toName: 'Moussa',
-      subject: `Nouveau devis: ${name} - ${projectType}`,
-      htmlContent: `
-        <h2>Nouvelle demande de devis</h2>
-        <p><strong>Nom:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Type:</strong> ${projectType}</p>
-        <p><strong>Budget:</strong> ${budget}</p>
-        <p><strong>Description:</strong> ${description}</p>
-      `,
+      subject: 'Nouveau devis: ' + name + ' - ' + projectType,
+      htmlContent: '<h2>Nouvelle demande de devis</h2><p><strong>Nom:</strong> ' + name + '</p><p><strong>Email:</strong> ' + email + '</p><p><strong>Type:</strong> ' + projectType + '</p><p><strong>Budget:</strong> ' + budget + '</p><p><strong>Description:</strong> ' + description + '</p>',
     });
+    console.log('Notify email result:', JSON.stringify(notifyResult));
 
     return NextResponse.json({ success: true });
   } catch (error) {
-    console.error('Webhook error:', error);
-    return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
+    console.error('Webhook error:', error.message, error.stack);
+    return NextResponse.json(
+      { error: 'Internal server error', details: error.message },
+      { status: 500 }
+    );
   }
 }
