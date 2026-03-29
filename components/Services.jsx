@@ -15,14 +15,14 @@ import {
 const content = {
   fr: {
     title: 'Nos Services',
-    subtitle: 'Tout ce dont vous avez besoin pour reussir en ligne',
+    subtitle: 'Tout ce dont vous avez besoin pour rÃ©ussir en ligne',
     services: [
-      { icon: Zap, title: 'Landing Pages', description: 'Des pages de destination optimisees pour convertir vos visiteurs en clients.' },
-      { icon: Globe, title: 'Sites Vitrine', description: 'Presentez votre entreprise avec un site web moderne et professionnel.' },
+      { icon: Zap, title: 'Landing Pages', description: 'Des pages de destination optimisÃ©es pour convertir vos visiteurs en clients.' },
+      { icon: Globe, title: 'Sites Vitrine', description: 'PrÃ©sentez votre entreprise avec un site web moderne et professionnel.' },
       { icon: ShoppingCart, title: 'E-commerce', description: 'Boutiques en ligne performantes avec integration paiement Stripe.' },
       { icon: BarChart3, title: 'SEO & Analytics', description: 'Optimisation pour les moteurs de recherche et suivi de performance.' },
-      { icon: Palette, title: 'Design UI/UX', description: 'Designs personnalises et experiences utilisateur exceptionnelles.' },
-      { icon: Wrench, title: 'Maintenance', description: 'Support technique 24/7 et mises a jour regulieres de votre site.' },
+      { icon: Palette, title: 'Design UI/UX', description: 'Designs personnalisÃ©s et expÃ©riences utilisateur exceptionnelles.' },
+      { icon: Wrench, title: 'Maintenance', description: 'Support technique 24/7 et mises Ã  jour rÃ©guliÃ¨res de votre site.' },
     ],
   },
   en: {
