@@ -7,13 +7,13 @@ import { ArrowRight, Sparkles } from 'lucide-react';
 
 const content = {
   fr: {
-    tag: 'Agence web nouvelle generation',
+    tag: 'Agence web nouvelle gÃ©nÃ©ration',
     h1_words: ['Votre', 'site', 'pro.', 'Des', 'le', 'jour', '1.'],
     subtitle:
-      'Nous creons des landing pages haute performance qui transforment vos visiteurs en clients. Rapidement. Sans compromis sur la qualite.',
+      'Nous crÃ©ons des landing pages haute performance qui transforment vos visiteurs en clients. Rapidement. Sans compromis sur la qualitÃ©.',
     cta1: 'Demander un devis gratuit',
-    cta2: 'Voir nos realisations',
-    counter1Label: 'Sites livres',
+    cta2: 'Voir nos rÃ©alisations',
+    counter1Label: 'Sites livrÃ©s',
     counter2Label: 'Temps moyen',
     counter3Label: 'Satisfaction',
   },
