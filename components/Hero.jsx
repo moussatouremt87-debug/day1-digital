@@ -85,9 +85,28 @@ const Particles = () => (
 export default function Hero() {
   const { language } = useLanguage();
   const t = content[language];
+  const videoRef = useRef(null);
 
   return (
     <section className="relative pt-32 pb-24 px-4 sm:px-6 lg:px-8 overflow-hidden min-h-[90vh] flex items-center">
+      {/* Hero video background */}
+      <div className="absolute inset-0 z-0">
+        <video
+          ref={videoRef}
+          autoPlay
+          loop
+          muted
+          playsInline
+          poster="/hero-poster.jpg"
+          className="absolute inset-0 w-full h-full object-cover opacity-20"
+        >
+          <source src="/hero-video.webm" type="video/webm" />
+          <source src="/hero-video.mp4" type="video/mp4" />
+        </video>
+        {/* Dark overlay to ensure text readability */}
+        <div className="absolute inset-0 bg-charcoal-900/80" />
+      </div>
+
       {/* Animated grid background */}
       <div className="absolute inset-0 hero-grid" />
 
