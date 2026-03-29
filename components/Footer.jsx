@@ -42,9 +42,7 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <div className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 bg-lime-500 rounded-lg flex items-center justify-center font-bold text-charcoal-900">
-                D1
-              </div>
+              <img src="/Sleek%20Monogram%20Logo%20'D1'%20Design.png" width={40} height={40} alt="Day1 Digital logo" className="w-10 h-10 rounded-lg" />
               <span className="text-xl font-bold text-slate-50">Day1</span>
             </div>
             <p className="text-slate-400 text-sm">{t.description}</p>
