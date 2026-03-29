@@ -23,7 +23,7 @@ const content = {
     legal: 'Legal',
     contact: 'Contact',
     about: 'About',
-    privacy: 'Privacy',
+    privacy: 'Legal Notice',
     terms: 'Terms',
     email: 'contact@day1.digital',
     year: new Date().getFullYear(),
@@ -154,7 +154,7 @@ export default function Footer() {
             <ul className="space-y-2">
               <li>
                 <a
-                  href="#"
+                  href="/mentions-legales"
                   className="text-slate-400 hover:text-lime-400 transition-colors text-sm"
                 >
                   {t.privacy}
@@ -181,7 +181,7 @@ export default function Footer() {
           </p>
           <div className="flex gap-6 mt-4 md:mt-0">
             <a
-              href="#"
+              href="/mentions-legales"
               className="text-slate-400 hover:text-lime-400 transition-colors text-sm"
             >
               {t.privacy}
