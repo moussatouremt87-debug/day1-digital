@@ -4,7 +4,6 @@ import { useLanguage } from './LanguageContext';
 import { Menu, X } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import Image from 'next/image';
 
 const content = {
   fr: {
@@ -70,7 +69,7 @@ export default function Navbar() {
             whileHover={{ scale: 1.05 }}
             className="flex items-center gap-3 cursor-pointer group"
           >
-            <Image src="/Sleek Monogram Logo 'D1' Design.png" width={40} height={40} alt="Day1 Digital logo" className="rounded-lg group-hover:shadow-[0_0_20px_rgba(132,204,22,0.5)] transition-shadow duration-300" />
+            <img src="/Sleek%20Monogram%20Logo%20'D1'%20Design.png" width={40} height={40} alt="Day1 Digital logo" className="w-10 h-10 rounded-lg group-hover:shadow-[0_0_20px_rgba(132,204,22,0.5)] transition-shadow duration-300" />
             <span className="text-xl font-bold text-slate-50 group-hover:text-lime-400 transition-colors">
               Day1
             </span>
