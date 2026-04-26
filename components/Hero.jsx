@@ -64,62 +64,15 @@ const Counter = ({ target, label, suffix = '' }) => {
   );
 };
 
-const Particles = () => (
-  <div className="absolute inset-0 overflow-hidden pointer-events-none">
-    {[...Array(20)].map((_, i) => (
-      <div
-        key={i}
-        className="absolute w-1 h-1 bg-lime-500 rounded-full"
-        style={{
-          left: `${Math.random() * 100}%`,
-          top: `${Math.random() * 100}%`,
-          opacity: 0.15 + Math.random() * 0.2,
-          animation: `float ${5 + Math.random() * 10}s ease-in-out infinite`,
-          animationDelay: `${Math.random() * 5}s`,
-        }}
-      />
-    ))}
-  </div>
-);
-
 export default function Hero() {
   const { language } = useLanguage();
   const t = content[language];
-  const videoRef = useRef(null);
 
   return (
     <section className="relative pt-32 pb-24 px-4 sm:px-6 lg:px-8 overflow-hidden min-h-[90vh] flex items-center">
-      {/* Hero video background */}
-      <div className="absolute inset-0 z-0">
-        <video
-          ref={videoRef}
-          autoPlay
-          loop
-          muted
-          playsInline
-          poster="/hero-poster.jpg"
-          className="absolute inset-0 w-full h-full object-cover opacity-20"
-        >
-          <source src="/hero-video.webm" type="video/webm" />
-          <source src="/hero-video.mp4" type="video/mp4" />
-        </video>
-        {/* Dark overlay to ensure text readability */}
-        <div className="absolute inset-0 bg-charcoal-900/80" />
-      </div>
-
-      {/* Animated grid background */}
-      <div className="absolute inset-0 hero-grid" />
-
-      {/* Radial gradient overlay */}
+      {/* Radial gradient overlay for text readability */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,rgba(132,204,22,0.08)_0%,transparent_50%)]" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,rgba(132,204,22,0.05)_0%,transparent_50%)]" />
-
-      {/* Floating particles */}
-      <Particles />
-
-      {/* Large blurred lime circle deco */}
-      <div className="absolute -top-40 -right-40 w-96 h-96 bg-lime-500/5 rounded-full blur-3xl" />
-      <div className="absolute -bottom-20 -left-20 w-64 h-64 bg-lime-500/5 rounded-full blur-3xl" />
 
       <div className="max-w-7xl mx-auto relative z-10 w-full">
         {/* Tag */}
