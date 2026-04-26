@@ -11,7 +11,7 @@ import WaveDivider from '@/components/WaveDivider';
 
 export default function Home() {
   return (
-    <main className="bg-charcoal-900 min-h-screen">
+    <main className="bg-charcoal-900/80 min-h-screen">
       <Navbar />
       <Hero />
       <WaveDivider color="#1E293B" />
