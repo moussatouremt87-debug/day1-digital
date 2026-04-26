@@ -1,6 +1,12 @@
+import dynamic from 'next/dynamic';
 import { LanguageProvider } from '@/components/LanguageContext';
 import CookieBanner from '@/components/CookieBanner';
 import './globals.css';
+
+const ShaderBackground = dynamic(
+  () => import('@/components/ui/shader-animation').then((mod) => ({ default: mod.ShaderAnimation })),
+  { ssr: false }
+);
 
 export const metadata = {
   metadataBase: new URL('https://www.day1-digital.com'),
@@ -117,8 +123,11 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body>
+        <ShaderBackground />
         <LanguageProvider>
-          {children}
+          <div style={{ position: 'relative', zIndex: 1 }}>
+            {children}
+          </div>
           <CookieBanner />
         </LanguageProvider>
       </body>
